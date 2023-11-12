@@ -1,11 +1,5 @@
 #include "main.h"
-/**
-* print_hex - function that prints an unsigned int in hexadecimal
-* @n: unsigned to be printed
-* @c: case of printing (0 = lower, 1 = upper)
-* Descriptions: prints unsigned in hexadecimal with _putchar
-* Return: size the output
-*/
+
 int print_hex(unsigned int n, unsigned int c)
 {
 	unsigned int len, powten, j, digit, num;
