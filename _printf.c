@@ -1,80 +1,69 @@
-
-
+#include <stdarg.h>
+#include <unistd.h>
 #include "main.h"
 
+int (*find_function(const char *format))(va_list)
+{
+	unsigned int i = 0;
+	code_f find_f[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"i", print_int},
+		{"d", print_dec},
+		{"r", print_rev},
+		{"b", print_bin},
+		{"u", print_unsig},
+		{"o", print_octal},
+		{"x", print_x},
+		{"X", print_X},
+		{"R", print_rot13},
+		{NULL, NULL}
+	};
 
-int _printf(const char* format, ...) {
-    int count = 0;
-    va_list args;
-    va_start(args, format);
+	while (find_f[i].sc)
+	{
+		if (find_f[i].sc[0] == (*format))
+			return (find_f[i].f);
+		i++;
+	}
+	return (NULL);
+}
 
-    for (int i = 0; format[i] != '\0'; i++) {
-        if (format[i] == '%' && format[i + 1] != '\0') {
-            i++;
-            switch (format[i]) {
-            case 'c': {
-                char ch = (char)va_arg(args, int); // char is promoted to int
-                putchar(ch);
-                count++;
-                break;
-            }
-            case 's': {
-                char* str = va_arg(args, char*);
-                if (str == NULL) str = "(null)";
-                for (int j = 0; str[j] != '\0'; j++, count++) {
-                    putchar(str[j]);
-                }
-                break;
-            }
-            case 'd':
-            case 'i': {
-                int num = va_arg(args, int);
-                print_int(num, &count);
-                break;
-            }
-            case 'u': {
-                unsigned int num = va_arg(args, unsigned int);
-                print_unsigned(num, 10, 0, &count);
-                break;
-            }
-            case 'o': {
-                unsigned int num = va_arg(args, unsigned int);
-                print_unsigned(num, 8, 0, &count);
-                break;
-            }
-            case 'x': {
-                unsigned int num = va_arg(args, unsigned int);
-                print_unsigned(num, 16, 0, &count);
-                break;
-            }
-            case 'X': {
-                unsigned int num = va_arg(args, unsigned int);
-                print_unsigned(num, 16, 1, &count);
-                break;
-            }
-            case 'p': {
-                void* ptr = va_arg(args, void*);
-                print_pointer(ptr, &count);
-                break;
-            }
-            case '%': {
-                putchar('%');
-                count++;
-                break;
-            }
-            default: {
-                putchar(format[i]);
-                count++;
-                break;
-            }
-            }
-        }
-        else {
-            putchar(format[i]);
-            count++;
-        }
-    }
+int _printf(const char *format, ...)
+{
+	va_list ap;
+	int (*f)(va_list);
+	unsigned int i = 0, cprint = 0;
 
-    va_end(args);
-    return count;
+	if (format == NULL)
+		return (-1);
+	va_start(ap, format);
+	while (format[i])
+	{
+		while (format[i] != '%' && format[i])
+		{
+			_putchar(format[i]);
+			cprint++;
+			i++;
+		}
+		if (format[i] == '\0')
+			return (cprint);
+		f = find_function(&format[i + 1]);
+		if (f != NULL)
+		{
+			cprint += f(ap);
+			i += 2;
+			continue;
+		}
+		if (!format[i + 1])
+			return (-1);
+		_putchar(format[i]);
+		cprint++;
+		if (format[i + 1] == '%')
+			i += 2;
+		else
+			i++;
+	}
+	va_end(ap);
+	return (cprint);
 }
