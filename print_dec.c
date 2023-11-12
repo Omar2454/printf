@@ -1,10 +1,5 @@
 #include "main.h"
-/**
-* print_dec - function that prints an decimal
-* @d: integer to print
-* Descriptions: prints digit with _putchar
-* Return: size the output text
-*/
+
 int print_dec(va_list d)
 {
 	int len, powten, j, digit, n, count = 0, num;
