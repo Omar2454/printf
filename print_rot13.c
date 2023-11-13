@@ -1,6 +1,13 @@
 #include "main.h"
 #include <stdio.h>
 
+/**
+ * print_rot13 - A function that applies the ROT13 cipher to a string.
+ * @R: The va_list that holds the string to be processed.
+ *
+ * Return: The number of characters processed and printed.
+ */
+
 int print_rot13(va_list R)
 {
 	int j, i, count = 0;

@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * print_octal - A function that prints an unsigned integer in octal format.
+ * @o: The va_list that holds the unsigned integer to be printed.
+ *
+ * Return: The number of characters printed.
+ */
+
 int print_octal(va_list o)
 {
 	unsigned int len, powten, j, digit, n, num;

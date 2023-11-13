@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * print_dec - A function that prints an integer in decimal format.
+ * @d: The va_list containing the integer to be printed.
+ *
+ * Return: The number of characters printed.
+ */
+
 int print_dec(va_list d)
 {
 	int len, powten, j, digit, n, count = 0, num;

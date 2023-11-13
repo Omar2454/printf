@@ -1,5 +1,15 @@
 #include "main.h"
 
+/**
+ * print_hex - A function that prints an unsigned integer
+ * in hexadecimal format.
+ * @n: The unsigned integer to be printed.
+ * @c: A flag to determine whether to use
+ * lowercase or uppercase letters ('0' for lowercase, '1' for uppercase).
+ *
+ * Return: The number of characters printed.
+ */
+
 int print_hex(unsigned int n, unsigned int c)
 {
 	unsigned int len, powten, j, digit, num;

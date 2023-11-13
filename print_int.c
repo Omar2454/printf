@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * print_int - A function that prints an integer.
+ * @i: The integer to be printed.
+ *
+ * Return: The number of characters printed.
+ */
+
 int print_int(va_list i)
 {
 	int len, powten, j, digit, n, count = 0, num;

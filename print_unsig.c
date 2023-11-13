@@ -1,5 +1,13 @@
 #include "main.h"
 
+/**
+ * print_unsig - A function that prints an unsigned
+ * integer to the standard output.
+ * @u: The va_list that holds the unsigned integer to be printed.
+ *
+ * Return: The number of characters printed.
+ */
+
 int print_unsig(va_list u)
 {
 	unsigned int len, powten, j, digit, n, num;

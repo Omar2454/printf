@@ -2,6 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * print_string - A function that prints a string to the standard output.
+ * @s: The va_list that holds the string to be printed.
+ *
+ * Return: The number of characters printed.
+ */
+
 int print_string(va_list s)
 {
 	char *my_string;

@@ -2,6 +2,14 @@
 #include <stdio.h>
 #include "main.h"
 
+/**
+ * print_bin - A function that prints the binary representation
+ * of an unsigned integer.
+ * @b: The va_list containing the unsigned integer to be printed in binary.
+ *
+ * Return: The number of characters printed.
+ */
+
 int print_bin(va_list b)
 {
 	unsigned int len, powten, j, digit, n, num;

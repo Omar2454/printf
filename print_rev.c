@@ -2,6 +2,13 @@
 #include <stdio.h>
 #include "main.h"
 
+/**
+ * print_rev - A function that prints a string in reverse.
+ * @r: The va_list that holds the string to be printed.
+ *
+ * Return: The number of characters printed.
+ */
+
 int print_rev(va_list r)
 {
 	char *st;
