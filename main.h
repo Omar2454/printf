@@ -16,10 +16,17 @@ int print_x(va_list x);
 int print_X(va_list X);
 int print_rot13(va_list R);
 
+/**
+ * struct code_format - Structure for associating
+ * a format specifier with its printing function.
+ * @sc: Format specifier string.
+ * @f: Function pointer to the corresponding printing function.
+ */
+
 typedef struct code_format
 {
 	char *sc;
 	int (*f)(va_list);
 } code_f;
 
-#endif 
+#endif

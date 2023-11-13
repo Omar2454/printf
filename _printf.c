@@ -2,6 +2,14 @@
 #include <unistd.h>
 #include "main.h"
 
+/**
+ * find_function - Find the corresponding printing
+ * function for a format specifier.
+ * @format: The format specifier to search for.
+ *
+ * Return: A function pointer to the corresponding printing function.
+ */
+
 int (*find_function(const char *format))(va_list)
 {
 	unsigned int i = 0;
@@ -17,8 +25,7 @@ int (*find_function(const char *format))(va_list)
 		{"x", print_x},
 		{"X", print_X},
 		{"R", print_rot13},
-		{NULL, NULL}
-	};
+		{NULL, NULL}};
 
 	while (find_f[i].sc)
 	{
@@ -28,6 +35,15 @@ int (*find_function(const char *format))(va_list)
 	}
 	return (NULL);
 }
+
+/**
+ * _printf - Custom printf function that formats and
+ * prints data to the standard output.
+ * @format: The format string specifying the output format.
+ *
+ * Return: The number of characters printed (excluding null byte),
+ *         or -1 if an error occurs.
+ */
 
 int _printf(const char *format, ...)
 {
