@@ -12,25 +12,15 @@
 int print_string(va_list s)
 {
 	char *my_string;
-	int i, count = 0;
+	int  i = 0;
 
 	my_string = va_arg(s, char *);
 	if (my_string == NULL)
 		my_string = "(null)";
-	for (i = 0; my_string[i]; i++)
+	while (my_string[i])
 	{
-		if ((my_string[i] > 0 && my_string[i] < 32) || my_string[i] >= 127)
-		{
-			_putchar('\\');
-			_putchar('x');
-			count += 2;
-			count += print_hex((unsigned int)my_string[i], 1);
-		}
-		else
-		{
-			_putchar(my_string[i]);
-			count++;
-		}
+		_putchar(my_string[i]);
+		i++;
 	}
-	return (count);
+	return (i);
 }
